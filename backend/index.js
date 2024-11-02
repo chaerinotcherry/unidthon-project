@@ -19,7 +19,7 @@ async function startServer() {
     console.log('Database synchronized!');
 
     app.listen(port, () => {
-      console.log(`Server is running on http://localhost:${port}`);
+      console.log(`Server is running}`);
     });
   } catch (error) {
     console.error('Error synchronizing database:', error);
