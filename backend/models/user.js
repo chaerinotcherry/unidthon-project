@@ -3,10 +3,10 @@ const { Sequelize, DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   const User = sequelize.define('User', {
     id: {
-      type: DataTypes.UUID,
-      defaultValue: Sequelize.UUIDV4,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true
     },
     username: {
       type: DataTypes.STRING,
