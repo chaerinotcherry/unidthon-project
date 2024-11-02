@@ -4,8 +4,10 @@ import "./Detail.css";
 import Table from "./Table";
 import KakaoMap from "./KakaoMap";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-function Detail({ gonggoId }) {
+function Detail() {
+  const { gonggoId } = useParams(); // URL에서 gonggoId 파라미터 가져오기
   const [houseInfo, setHouseInfo] = useState(null);
   const [supplies, setSupplies] = useState([]);
   const [error, setError] = useState(null);
@@ -14,7 +16,7 @@ function Detail({ gonggoId }) {
   useEffect(() => {
     // GET 요청을 보냅니다.
     axios
-      .get("http://13.125.39.194/houses/2/info")
+      .get("http://13.125.39.194/houses/" + gonggoId + "/info")
       .then((response) => {
         setHouseInfo(response.data); // 일반 정보를 상태에 저장합니다.저장합니다.
         setSupplies([...response.data["공급정보"]]);
@@ -39,7 +41,12 @@ function Detail({ gonggoId }) {
   };
 
   return (
-    <div className="this">
+    <div
+      className="this"
+      style={{
+        "margin-top": "53px",
+      }}
+    >
       <div>
         <button className="청약추가버튼">내 청약 추가</button>
         <button
@@ -50,8 +57,9 @@ function Detail({ gonggoId }) {
         </button>
         <button className="목록버튼">목록</button>
       </div>
-
-      <h1 className="title">{houseInfo.공고명}</h1>
+      <div>
+        <h1 className="title">{houseInfo.공고명}</h1>
+      </div>
 
       <div className="제목아래모음">
         <span className="제목아래항목">• 주관사: {houseInfo.주관사}</span>
@@ -97,7 +105,7 @@ function Detail({ gonggoId }) {
       <div className="block">
         <h4 className="subtitle">단지 관련 이미지(평면도) 정보</h4>
         <img
-          src="https://img.hankyung.com/photo/202404/01.36313560.1.jpg"
+          src={supplies[selectedIndex].평면도_object_key}
           alt="단지 관련 이미지"
           className="단지이미지"
         />
