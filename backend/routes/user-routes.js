@@ -51,8 +51,7 @@ router.get('/profile', async (req, res) => {
         phonenumber: '010-1234-5678'
     });
 });
-
-router.get('/preference-filter', async (req, res) => {
+router.get('/filter', async (req, res) => {
     const user = await User.findOne({ where: { id: 1 } });
     res.status(200).json({
         birthYear: user.birthYear,
@@ -66,15 +65,11 @@ router.get('/preference-filter', async (req, res) => {
           carPrice: user.carPrice,
           parentCarPrice: user.parentCarPrice,
           parentHousePrice: user.parentHousePrice,
-          parentMonthlyIncome: user.parentMonthlyIncome,
-          favoriteLoc: user.favoriteLoc,
-          favMaxDeposit: user.favMaxDeposit,
-          favMinArea: user.favMinArea,
-          favMaxArea: user.favMaxArea
+          parentMonthlyIncome: user.parentMonthlyIncome
     })
 });
 
-router.put('/preference-filter', async (req, res) => {
+router.put('/filter', async (req, res) => {
     const {birthYear,
         currentJob,
           haveHouse,
@@ -86,11 +81,7 @@ router.put('/preference-filter', async (req, res) => {
           carPrice,
           parentCarPrice,
           parentHousePrice,
-          parentMonthlyIncome,
-          favoriteLoc,
-          favMaxDeposit,
-          favMinArea,
-          favMaxArea } = req.body;
+          parentMonthlyIncome} = req.body;
     const user = await User.findOne({ where: { id: 1 } });
         console.log(user);
 user.birthYear = birthYear;
@@ -105,6 +96,29 @@ user.carPrice = carPrice;
 user.parentCarPrice = parentCarPrice;
  user.parentHousePrice = parentHousePrice;
  user.parentMonthlyIncome = parentMonthlyIncome;
+  await user.save();
+  console.log(user);
+  res.status(200).json({ message: '수정 성공' });
+});
+
+router.get('/preference-filter', async (req, res) => {
+    const user = await User.findOne({ where: { id: 1 } });
+    res.status(200).json({
+          favoriteLoc: user.favoriteLoc,
+          favMaxDeposit: user.favMaxDeposit,
+          favMinArea: user.favMinArea,
+          favMaxArea: user.favMaxArea
+    })
+});
+
+router.put('/preference-filter', async (req, res) => {
+    const {
+          favoriteLoc,
+          favMaxDeposit,
+          favMinArea,
+          favMaxArea } = req.body;
+    const user = await User.findOne({ where: { id: 1 } });
+        console.log(user);
  user.favoriteLoc = favoriteLoc;
  user.favMaxDeposit = favMaxDeposit;
  user.favMinArea = favMinArea;
