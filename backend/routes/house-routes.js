@@ -4,14 +4,15 @@ const GonggoSchedule = db.GonggoSchedule;
 const GonggoApt = db.GonggoApt;
 const GonggoAptNear = db.GonggoAptNear;
 const express = require('express');
+const gonggoApt = require('../models/gonggoApt');
 const router = express.Router();
 
 router.get('/:houseId/info', async (req, res) => {
     const {houseId} = req.params;
     const gonggo = await Gonggo.findOne({ where: { id: houseId } });
     const schedules = await GonggoSchedule.findOne({
-        where:{gonggoId: houseId},
-        attributes: {
+        where:{gattrionggoId: houseId},
+        butes: {
         exclude: [
             'createdAt', 'updatedAt', 'gonggoId'
         ]}
@@ -72,20 +73,53 @@ router.get('/', async (req, res) => {
             ]
         });
 
+
         const today = new Date();
 
-        const response = gonggos.map(async gonggo => {
-            const schedule = await GonggoSchedule.findOne({where: {gonggoId: gonggo.id}}); // Ensure schedules is an array
+        const response = await Promise.all(gonggos.map(async gonggo => {
+            const schedule = await GonggoSchedule.findOne({ where: { gonggoId: gonggo.id } });
+            const rent = await GonggoApt.min('월세', {
+                where: { gonggoId: gonggo.id }
+            });
+            const city = await GonggoApt.findOne({
+                where: { gonggoId: gonggo.id },
+                attributes: 
+                    ['시도군구']
+                
+            });
+            if (!schedule || !schedule.접수마감일) {
+                // Handle case where schedule is not found or 접수마감일 is not set
+                return { dday: "No deadline" }; // Or any default value you prefer
+            }
+            let text = '접수마감';
+            let dday;
             
-            const deadline = new Date(schedule.접수마감일); // Convert to Date object
-            const differenceInTime = deadline - today; // Time difference in milliseconds
-            const differenceInDays = Math.ceil(differenceInTime / (1000 * 60 * 60 * 24)); // Convert to days
-            const dday = "D-" + differenceInDays; // Format as D-days
-
+            const startdate = new Date(schedule.접수시작일);
+            if(startdate>today) {
+                text = '점수시작';
+                const differenceInTime = startdate - today; // Time difference in milliseconds
+                const differenceInDays = Math.ceil(differenceInTime / (1000 * 60 * 60 * 24)); // Convert to days
+                dday = "D-" + differenceInDays;
+            } else {
+                const deadline = new Date(schedule.접수마감일); // Convert to Date object
+                const differenceInTime = deadline - today; // Time difference in milliseconds
+                const differenceInDays = Math.ceil(differenceInTime / (1000 * 60 * 60 * 24)); // Convert to days
+                
+                if(differenceInDays>0){
+                    dday = "D-" + differenceInDays;
+                    
+                } // Format as D-days
+                else if (differenceInDays==0) dday = "D-DAY";
+                else{ dday = "D+" + -differenceInDays;
+                }
+            }
             return {
-                dday // Add the calculated dday
+                '공고명': gonggo.공고명,
+                '지역': city.시도군구,
+                '최소 월세': rent,
+                [text] : dday // Add the calculated dday
             };
-        });
+        }));
 
         res.status(200).json(response);
 
