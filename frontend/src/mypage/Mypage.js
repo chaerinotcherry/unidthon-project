@@ -8,14 +8,14 @@ function Mypage() {
     const [userData, setUserData] = useState({
         nickname: '유니드',
         username: 'unid_24',
-        phonenumber: '010-1234-5678',
+        phonenumber: '010-0000-0000',
     });
 
     useEffect(() => {
         // API 호출 함수
         const fetchUserData = async () => {
             try {
-                const response = await axios.get('/users/profile'); // 실제 API 엔드포인트로 변경
+                const response = await axios.get('http://13.125.39.194/users/profile'); // 실제 API 엔드포인트로 변경
                 const { nickname, username, phonenumber } = response.data;
                 setUserData({ nickname, username, phonenumber });
             } catch (error) {
