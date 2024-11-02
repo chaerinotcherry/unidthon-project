@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
         allowNull: true,
     },
     공고링크: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: true,
     },
     

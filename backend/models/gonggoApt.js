@@ -9,21 +9,17 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
       },
-    시도: {
+    시도군구: {
       type: DataTypes.STRING,
       allowNull: false,
       },
-    시군구: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     주택명: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     평수: {
       type: DataTypes.FLOAT,
-      allowNull: false,
+      allowNull: true,
       },
 
     공급호수: {
@@ -41,7 +37,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     평면도_object_key: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
     주소: {
@@ -52,7 +48,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-    재계약가능횟수: {
+    재계약가능최대횟수: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -68,7 +64,7 @@ module.exports = (sequelize) => {
 
     
 GonggoApt.associate = (models) => {
-    GonggoApt.hasMany(models.GonggoApt, {
+    GonggoApt.hasMany(models.GonggoAptNear, {
       foreignKey: 'gonggoAptId', 
       as: '주변편의시설', 
     });

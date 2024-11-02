@@ -23,11 +23,11 @@ module.exports = (sequelize) => {
       },
     계약시작일: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       },
     계약마감일: {
       type: DataTypes.DATEONLY,
-      allowNull: false,
+      allowNull: true,
       },
     gonggoId: {
       type: DataTypes.INTEGER,
