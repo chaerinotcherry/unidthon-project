@@ -5,6 +5,7 @@ import {
   Routes,
   Link,
   useLocation,
+  matchPath,
 } from "react-router-dom";
 import Detail from "./detail/Detail";
 import Home from "./home/Home";
@@ -22,8 +23,9 @@ function App() {
 
 function MainContent() {
   const location = useLocation();
-  const showHeader = !["/mypage", "/detail/:gonggoId"].includes(
-    location.pathname
+  const hideHeaderPaths = ["/mypage", "/detail/:gonggoId"];
+  const showHeader = !hideHeaderPaths.some((path) =>
+    matchPath({ path, end: true }, location.pathname)
   );
 
   return (
