@@ -22,7 +22,9 @@ function App() {
 
 function MainContent() {
   const location = useLocation();
-  const showHeader = !["/mypage", "/detail/:id"].includes(location.pathname);
+  const showHeader = !["/mypage", "/detail/:gonggoId"].includes(
+    location.pathname
+  );
 
   return (
     <div>
@@ -32,7 +34,8 @@ function MainContent() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/mypage" element={<Mypage />} />{" "}
-            <Route path="/detail/:id" element={<Detail />} />{" "}
+            <Route path="/detail/:gonggoId" element={<Detail />} />{" "}
+            {/* Detail 화면 */}
             <Route path="/custom" element={<Custom />} />{" "}
           </Routes>
         </div>

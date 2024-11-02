@@ -106,7 +106,8 @@
   font-style: normal;
   font-weight: 700;
   line-height: 17px; /* 77.273% */
-  margin-bottom: 25px;
+  margin-bottom: 23px;
+  margin-top: 10px;
 }
 
 .공급일정항목 {
@@ -131,17 +132,17 @@
 .table-header {
   width: 1175px;
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
   border-bottom: 2px solid #d9d9d9;
-  padding: 10px 0;
+  padding: 10px 20px;
   font-weight: bold;
 }
 
 .table-row {
   width: 1175px;
   display: grid;
-  grid-template-columns: 2fr 3fr 1fr 1fr;
-  padding: 15px 0;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  padding: 15px 10px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -174,4 +175,5 @@
   font-style: normal;
   font-weight: 400;
   line-height: 17px; /* 100% */
+  margin-bottom: 10px;
 }
