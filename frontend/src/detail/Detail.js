@@ -4,9 +4,10 @@ import "./Detail.css";
 import Table from "./Table";
 import KakaoMap from "./KakaoMap";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Detail() {
+  const navigate = useNavigate();
   const { gonggoId } = useParams(); // URL에서 gonggoId 파라미터 가져오기
   const [houseInfo, setHouseInfo] = useState(null);
   const [supplies, setSupplies] = useState([]);
@@ -40,6 +41,10 @@ function Detail() {
     setSelectedIndex(index);
   };
 
+  const handleGoBack = () => {
+    navigate(-1); // 이전 페이지로 이동
+  };
+
   return (
     <div
       className="this"
@@ -55,7 +60,9 @@ function Detail() {
         >
           청약 신청 바로가기
         </button>
-        <button className="목록버튼">목록</button>
+        <button className="목록버튼" onClick={handleGoBack}>
+          목록
+        </button>
       </div>
       <div>
         <h1 className="title">{houseInfo.공고명}</h1>
