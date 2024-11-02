@@ -13,7 +13,7 @@ function CustomCard({ card }) {
   return (
     <div className="custom-card" onClick={handleCardClick}>
       <div className="card-header-all">
-        <span className="d-day-badge">{card.daysLeft}</span>
+        <span className="d-day-badge-b">{card.daysLeft}</span>
       </div>
       <img src={card.image} alt="공고 이미지" className="card-image" />
       <div className="card-content">

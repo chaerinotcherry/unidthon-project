@@ -28,18 +28,9 @@
   border-radius: 8px; /* 카드와 일관된 모서리 둥글기 */
 }
 
-.rank-badge {
-  background-color: #f4a261;
-  color: white;
-  font-weight: bold;
-  padding: 10px 15px;
-  border-radius: 50%;
-  font-size: 17px;
-}
-
-.d-day-badge {
-  background-color: #007bff;
-  color: white;
+.d-day-badge-b {
+  background-color: #e7f2fc;
+  color: #5291cb;
   padding: 10px 15px;
   border-radius: 5px;
   font-size: 17px;
@@ -59,19 +50,19 @@
 }
 
 .card-title {
-  font-size: 1em;
+  font-size: 20px;
   font-weight: bold;
   margin: 7px;
 }
 
 .card-price {
   font-size: 1.2em;
-  color: #007bff;
-  margin: 10px;
+  color: #2a74b7;
+  margin: 3px;
 }
 
 .card-location {
   font-size: 0.9em;
-  color: #6c757d;
+  color: #7ba719;
   margin: 5px;
 }
