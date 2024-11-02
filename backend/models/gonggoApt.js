@@ -29,13 +29,15 @@ module.exports = (sequelize) => {
     공급호수: {
       type: DataTypes.STRING,
       allowNull: false,
-      },
+    },
+    
     보증금: {
-      type: DataTypes.LONG,
+      type: DataTypes.INTEGER,
       allowNull: false,
-      },
+    },
+    
     월세: {
-        type: DataTypes.LONG,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     평면도_object_key: {
