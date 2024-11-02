@@ -11,7 +11,7 @@ router.get('/:houseId/info', async (req, res) => {
     const {houseId} = req.params;
     const gonggo = await Gonggo.findOne({ where: { id: houseId } });
     const schedules = await GonggoSchedule.findOne({
-        where:{gattrionggoId: houseId},
+        where:{gonggoId: houseId},
         butes: {
         exclude: [
             'createdAt', 'updatedAt', 'gonggoId'
