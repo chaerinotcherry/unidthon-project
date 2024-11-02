@@ -1,23 +1,8 @@
-.home-page {
-  max-width: 1050px; /* 최대 너비 설정 */
-  margin: 0 auto; /* 가로 중앙 정렬 */
-  padding: 20px;
-}
-
-.section-title {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 20px;
-  text-align: left;
-}
-
 /* 카드 컨테이너: 가로 정렬 */
 .card-container {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 35px;
 }
 
 /* 개별 카드 스타일 */
@@ -31,44 +16,21 @@
 }
 
 /* 카드 헤더 스타일 */
-.card-header {
+.card-header-all {
   position: absolute; /* 이미지 위에 겹치도록 설정 */
   top: 10px; /* 이미지의 위쪽에 배치 */
   left: 10px;
   width: 270px; /* 좌우 여백을 제외한 전체 너비 */
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   z-index: 1; /* 이미지보다 위에 표시되도록 설정 */ /* 배경색을 반투명하게 설정 (선택 사항) */
   padding: 5px; /* 내부 여백 */
   border-radius: 8px; /* 카드와 일관된 모서리 둥글기 */
 }
 
-.rank-badge {
-  font-weight: bold;
-  padding: 10px 15px;
-  border-radius: 50%;
-  font-size: 17px;
-  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
-}
-
-.rank-1 {
-  background-color: #ffe251;
-  color: #ff9d00;
-}
-
-.rank-2 {
-  background-color: white;
-  color: #878787;
-}
-
-.rank-3 {
-  background-color: #edc568;
-  color: #a86800;
-}
-
-.d-day-badge {
-  background-color: #fce7e7;
-  color: #f71a1a;
+.d-day-badge-b {
+  background-color: #e7f2fc;
+  color: #5291cb;
   padding: 10px 15px;
   border-radius: 5px;
   font-size: 17px;
@@ -88,7 +50,7 @@
 }
 
 .card-title {
-  font-size: 70px;
+  font-size: 20px;
   font-weight: bold;
   margin: 7px;
 }
@@ -96,7 +58,7 @@
 .card-price {
   font-size: 1.2em;
   color: #2a74b7;
-  margin: 10px;
+  margin: 3px;
 }
 
 .card-location {

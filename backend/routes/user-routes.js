@@ -12,6 +12,7 @@ router.post('/signup', async (req, res) => {
             password: password
         });
 
+        res.setHeader('Content-Type', 'application/json');
         res.status(200).json({
            message: 'Success'
         });
@@ -35,6 +36,7 @@ router.post('/login', async (req, res) => {
         if (!user) {
             return res.status(401).json({ message: 'Wrong Username or Password' });
         }
+        res.setHeader('Content-Type', 'application/json');
         res.status(200).json({ message: 'Logged in'});
         
     } catch (error) {
@@ -120,6 +122,7 @@ user.parentCarPrice = parentCarPrice;
 
 router.get('/preference-filter', async (req, res) => {
     const user = await User.findOne({ where: { id: 1 } });
+    res.setHeader('Content-Type', 'application/json');
     res.status(200).json({
           favoriteLoc: user.favoriteLoc,
           favMaxDeposit: user.favMaxDeposit,
@@ -142,7 +145,8 @@ router.put('/preference-filter', async (req, res) => {
 user.favMaxArea = favMaxArea;
 
   await user.save();
-  console.log(user);
+    console.log(user);
+    res.setHeader('Content-Type', 'application/json');
   res.status(200).json({ message: '수정 성공' });
 });
 
