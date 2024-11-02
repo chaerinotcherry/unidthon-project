@@ -8,39 +8,36 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    공고명: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    provider: {
+    주관사: {
         type: DataTypes.STRING,
         allowNull: true,
     },
-    type: {
+    공고유형: {
         type: DataTypes.STRING,
         allowNull: true,
     },
-    status: {
-        type: DataTypes.STRING,
+    공고링크: {
+        type: DataTypes.TEXT,
         allowNull: true,
     },
-    applicationPeriod: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    },
-    announcementDate: {
-        type: DataTypes.DATE,
-        allowNull: true,
-    },
-    contractPeriod: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    },
-    link: {
-        type: DataTypes.STRING,
-        allowNull: true,
-    }
+    
   });
+
+  Gonggo.associate = (models) => {
+    Gonggo.hasOne(models.GonggoSchedule, {
+      foreignKey: 'gonggoId',
+      as: '스케줄', 
+    });
+
+    Gonggo.hasMany(models.GonggoApt, {
+      foreignKey: 'gonggoId', 
+      as: '정보', 
+    });
+  };
 
   return Gonggo;
 };

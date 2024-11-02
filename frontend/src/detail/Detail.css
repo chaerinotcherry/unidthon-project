@@ -1,0 +1,177 @@
+.detail {
+  width: 1175px;
+}
+
+.청약추가버튼 {
+  background-color: #2a74b7; /* 원하는 배경 색상 */
+  padding: 15px 35px; /* 위아래 15px, 양쪽 35px 패딩 */
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px; /* 텍스트 크기 */
+  display: inline-block; /* 버튼 크기를 텍스트에 맞추기 */
+  cursor: pointer; /* 클릭 가능한 커서 */
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 100% */
+  border: none;
+  margin-right: 22px;
+}
+
+.청약신청바로가기버튼 {
+  background-color: #99c439; /* 원하는 배경 색상 */
+  padding: 15px 35px; /* 위아래 15px, 양쪽 35px 패딩 */
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px; /* 텍스트 크기 */
+  display: inline-block; /* 버튼 크기를 텍스트에 맞추기 */
+  cursor: pointer; /* 클릭 가능한 커서 */
+  color: var(--White, #fff);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 100% */
+  border: none;
+  margin-right: 700px;
+}
+
+.목록버튼 {
+  background-color: white; /* 원하는 배경 색상 */
+  padding: 15px 17px; /* 위아래 15px, 양쪽 35px 패딩 */
+  border-radius: 10px;
+  text-align: center;
+  font-size: 20px; /* 텍스트 크기 */
+  display: inline-block; /* 버튼 크기를 텍스트에 맞추기 */
+  cursor: pointer; /* 클릭 가능한 커서 */
+  color: var(--White, #2a74b7);
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 100% */
+  border-radius: 10px;
+  border-color: #2a74b7;
+}
+
+.title {
+  color: black;
+  font-size: 25px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 25px;
+  word-wrap: break-word;
+  margin-top: 35px;
+  margin-bottom: 24px;
+}
+
+.제목아래모음 {
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 30px;
+}
+
+.제목아래항목 {
+  color: #000;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px; /* 100% */
+}
+
+.Border {
+  width: 1175px;
+  height: 1px;
+  background: #d9d9d9;
+  margin-bottom: 30px;
+}
+
+.Border-Blue {
+  width: 1175px;
+  height: 3px;
+  background: #0055a2;
+}
+
+.subtitle {
+  color: #000;
+  font-family: Inter;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 17px; /* 77.273% */
+  margin-bottom: 25px;
+}
+
+.공급일정항목 {
+  color: #000;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px; /* 100% */
+  margin-bottom: 16px;
+}
+
+.공급일정항목:last-child {
+  margin-bottom: 45px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-header {
+  width: 1175px;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  border-bottom: 2px solid #d9d9d9;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.table-row {
+  width: 1175px;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr 1fr;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.table-row:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-row.selected {
+  background-color: #e7f2fc; /* 선택된 항목의 색상 */
+}
+
+.block {
+  margin-top: 55px;
+  width: 1175px;
+}
+
+.단지이미지 {
+  flex-shrink: 0;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; /* 부모 요소 너비에 맞춰 자동으로 크기 조절 */
+  width: 400px;
+}
+
+.임대기간 {
+  color: #000;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px; /* 100% */
+}
