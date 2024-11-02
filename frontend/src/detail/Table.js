@@ -19,7 +19,7 @@ function Table({ data }) {
 
   return (
     <div className="table">
-      <h4>공급 정보</h4>
+      <h4 className="subtitle">공급 정보</h4>
       <div className="Border-Blue"></div>
       <div className="table-header">
         <div>지자체명</div>

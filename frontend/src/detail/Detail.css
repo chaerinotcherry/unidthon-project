@@ -37,7 +37,7 @@
   font-weight: 700;
   line-height: 20px; /* 100% */
   border: none;
-  margin-right: 660px;
+  margin-right: 700px;
 }
 
 .목록버튼 {
@@ -66,12 +66,15 @@
   font-weight: 600;
   line-height: 25px;
   word-wrap: break-word;
+  margin-top: 35px;
+  margin-bottom: 24px;
 }
 
 .제목아래모음 {
   display: inline-flex;
   align-items: center;
   gap: 60px;
+  margin-bottom: 30px;
 }
 
 .제목아래항목 {
@@ -87,6 +90,7 @@
   width: 1175px;
   height: 1px;
   background: #d9d9d9;
+  margin-bottom: 30px;
 }
 
 .Border-Blue {
@@ -95,14 +99,14 @@
   background: #0055a2;
 }
 
-h4 {
+.subtitle {
   color: #000;
   font-family: Inter;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
   line-height: 17px; /* 77.273% */
-  margin-bottom: 18;
+  margin-bottom: 25px;
 }
 
 .공급일정항목 {
@@ -116,7 +120,7 @@ h4 {
 }
 
 .공급일정항목:last-child {
-  margin-bottom: 0px;
+  margin-bottom: 45px;
 }
 
 .table {
@@ -124,16 +128,11 @@ h4 {
   border-collapse: collapse;
 }
 
-h4 {
-  margin-bottom: 8px;
-  font-weight: bold;
-}
-
 .table-header {
   width: 1175px;
   display: grid;
   grid-template-columns: 2fr 3fr 1fr 1fr;
-  border-bottom: 2px solid #003366;
+  border-bottom: 2px solid #d9d9d9;
   padding: 10px 0;
   font-weight: bold;
 }
@@ -152,5 +151,27 @@ h4 {
 }
 
 .table-row.selected {
-  background-color: #cceeff; /* 선택된 항목의 색상 */
+  background-color: #e7f2fc; /* 선택된 항목의 색상 */
+}
+
+.block {
+  margin-top: 55px;
+  width: 1175px;
+}
+
+.단지이미지 {
+  flex-shrink: 0;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%; /* 부모 요소 너비에 맞춰 자동으로 크기 조절 */
+  width: 400px;
+}
+
+.임대기간 {
+  color: #000;
+  font-family: Inter;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 17px; /* 100% */
 }

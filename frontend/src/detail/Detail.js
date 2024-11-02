@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Detail.css";
 import Table from "./Table";
+import KakaoMap from "./KakaoMap";
 
 function Detail({ gonggoId }) {
   const [sangseData, setSangseData] = useState(null);
@@ -88,7 +89,7 @@ function Detail({ gonggoId }) {
       <div className="Border"></div>
 
       <div>
-        <h4>공급 일정</h4>
+        <h4 className="subtitle">공급 일정</h4>
         <div className="공급일정항목">
           • 접수기기간: 2024.11.11 ~ 2024.11.15
         </div>
@@ -105,6 +106,36 @@ function Detail({ gonggoId }) {
         {selectedIndex !== null && (
           <p>선택된 항목: {테이블목데이터[selectedIndex].지자체명}</p>
         )}
+      </div>
+
+      <div className="block">
+        <h4 className="subtitle">단지 관련 이미지(평면도) 정보</h4>
+        <img
+          src="https://img.hankyung.com/photo/202404/01.36313560.1.jpg"
+          alt="단지 관련 이미지"
+          className="단지이미지"
+        />
+      </div>
+
+      <div>
+        <h4 className="subtitle">단지 관련 위치 정보</h4>
+        <div
+          style={{
+            width: "1175px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <KakaoMap address="서울 용산구 두텁바위로37길 25" />
+        </div>
+      </div>
+
+      <div>
+        <h4 className="subtitle">임대기간</h4>
+        <div className="임대기간">
+          2년, 재계약 9회 가능(입주자격 유지시 최장 20년까지 거주가능)
+        </div>
       </div>
     </div>
   );
