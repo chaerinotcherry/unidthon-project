@@ -10,8 +10,9 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 const userRoutes = require('./routes/user-routes');
+const houseRoutes = require('./routes/house-routes');
 app.use('/users', userRoutes);
-
+app.use('/houses', houseRoutes);
 async function startServer() {
   try {
    

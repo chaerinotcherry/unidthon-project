@@ -66,7 +66,7 @@ module.exports = (sequelize) => {
 GonggoApt.associate = (models) => {
     GonggoApt.hasMany(models.GonggoAptNear, {
       foreignKey: 'gonggoAptId', 
-      as: '주변편의시설', 
+      as: '단지 주변 시설', 
     });
   };
     
