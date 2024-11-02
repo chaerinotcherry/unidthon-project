@@ -22,7 +22,12 @@ router.get('/:houseId/info', async (req, res) => {
             {
                 model: GonggoAptNear,
                 as: '단지 주변 시설',
-                required: false
+                required: false,
+                attributes: {
+                    exclude: [
+                        'createdAt', 'updatedAt', 'gonggoAptId'
+                    ]
+                }
             }
         ],
         attributes: {
@@ -32,6 +37,7 @@ router.get('/:houseId/info', async (req, res) => {
     });
     const today = new Date();
     let status;
+    console.log(schedules.접수마감일);
     if(today<schedules.접수마감일) status='공고중';
     else status='공고 마감';
 
@@ -53,5 +59,37 @@ router.get('/:houseId/info', async (req, res) => {
     })
 });
 
+router.get('/', async (req, res) => {
+    const filter = req.query.filter;
+    if(!filter){
+        const gonggos = await Gonggo.findAll({
+            include: [
+                // {
+                //     model: GonggoApt,
+                //     as: '정보',
+                //     required: false
+                // }
+            ]
+        });
+
+        const today = new Date();
+
+        const response = gonggos.map(async gonggo => {
+            const schedule = await GonggoSchedule.findOne({where: {gonggoId: gonggo.id}}); // Ensure schedules is an array
+            
+            const deadline = new Date(schedule.접수마감일); // Convert to Date object
+            const differenceInTime = deadline - today; // Time difference in milliseconds
+            const differenceInDays = Math.ceil(differenceInTime / (1000 * 60 * 60 * 24)); // Convert to days
+            const dday = "D-" + differenceInDays; // Format as D-days
+
+            return {
+                dday // Add the calculated dday
+            };
+        });
+
+        res.status(200).json(response);
+
+    }
+});
 
 module.exports = router;

@@ -9,11 +9,7 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
       },
-    시도: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      },
-    시군구: {
+    시도군구: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -52,7 +48,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-    재계약가능횟수: {
+    재계약가능최대횟수: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
