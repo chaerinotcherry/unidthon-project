@@ -1,0 +1,19 @@
+/* userinfo.css */
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    max-width: 200px;
+}
+
+.btn-primary {
+    background-color: #2A74B7;
+    border-color: #2A74B7;
+}
