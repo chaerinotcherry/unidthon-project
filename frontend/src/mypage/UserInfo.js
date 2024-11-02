@@ -1,26 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './UserInfo.css'; 
+import axios from 'axios';
 
 function UserInfo() {
     const [formData, setFormData] = useState({
-        isOwner: '예',
-        birthYear: '1997',
-        job: '대학생',
-        salary: '0',
-        workExperience: '아니오',
-        residence: '서울특별시 은평구',
-        assets: '5000',
-        numberOfApplications: '18',
-        carValue: '0',
+        haveHouse: false,
+        birthYear: 2000, // integer로 수정
+        currentJob: '대학생',
+        monthlyIncome: 0, // integer로 수정
+        haveWorked: false, // boolean으로 수정
+        currentLoc: '서울특별시 은평구',
+        asset: 3000, // integer로 수정
+        subscriptionNo: 16, // integer로 수정
+        carPrice: '없음', // ENUM 타입에 맞춰 수정
     });
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://13.125.39.194/users/myinfo');
+                setFormData(response.data);
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const { name, value, type } = e.target;
+        const newValue = type === 'radio' ? (value === 'true' ? true : value === 'false' ? false : value)
+                        : type === 'number' ? Number(value)
+                        : value;
+
+        setFormData({ ...formData, [name]: newValue });
     };
 
     const handleSave = async () => {
-        // await axios.put('/api/userinfo', formData);
+        await axios.put('http://13.125.39.194/users/myinfo', formData);
         alert("내 정보가 저장되었습니다.");
     };
 
@@ -34,24 +52,24 @@ function UserInfo() {
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">무주택자 여부</label>
                     <div className="col-3 d-flex align-items-center">
-                        <input type="radio" name="isOwner" value="예" onChange={handleChange} checked={formData.isOwner === '예'} /> 예
+                        <input type="radio" name="haveHouse" value={true} onChange={handleChange} checked={formData.haveHouse === true} /> 예
                     </div>
                     <div className="col-3 d-flex align-items-center">
-                        <input type="radio" name="isOwner" value="아니오" onChange={handleChange} className="ms-3" checked={formData.isOwner === '아니오'} /> 아니오
+                        <input type="radio" name="haveHouse" value={false} onChange={handleChange} checked={formData.haveHouse === false} /> 아니오
                     </div>
                 </div>
-                
+
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">출생연도</label>
                     <div className="col-9">
-                        <input type="text" className="form-control" name="birthYear" value={formData.birthYear} onChange={handleChange} />
+                        <input type="number" className="form-control" name="birthYear" value={formData.birthYear} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">현재 직업</label>
                     <div className="col-9">
-                        <select className="form-control" name="job" value={formData.job} onChange={handleChange}>
+                        <select className="form-control" name="currentJob" value={formData.currentJob} onChange={handleChange}>
                             <option value="대학생">대학생</option>
                             <option value="취준생">취준생</option>
                             <option value="일반 근로자">일반 근로자</option>
@@ -64,81 +82,54 @@ function UserInfo() {
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">월소득(본인)</label>
                     <div className="col-9">
-                        <input type="text" className="form-control" name="salary" value={formData.salary} onChange={handleChange} />
+                        <input type="number" className="form-control" name="monthlyIncome" value={formData.monthlyIncome} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">5년이상 근로 경험 여부</label>
                     <div className="col-3 d-flex align-items-center">
-                        <input type="radio" name="workExperience" value="예" onChange={handleChange} checked={formData.workExperience === '예'} /> 예
+                        <input type="radio" name="haveWorked" value={true} onChange={handleChange} checked={formData.haveWorked === true} /> 예
                     </div>
                     <div className="col-3 d-flex align-items-center">
-                        <input type="radio" name="workExperience" value="아니오" onChange={handleChange} checked={formData.workExperience === '아니오'} /> 아니오
+                        <input type="radio" name="haveWorked" value={false} onChange={handleChange} checked={formData.haveWorked === false} /> 아니오
                     </div>
                 </div>
 
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">현재 거주지</label>
                     <div className="col-9">
-                        <input type="text" className="form-control" name="residence" value={formData.residence} onChange={handleChange} />
+                        <input type="text" className="form-control" name="currentLoc" value={formData.currentLoc} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">자산(본인)</label>
                     <div className="col-9">
-                        <input type="text" className="form-control" name="assets" value={formData.assets} onChange={handleChange} />
+                        <input type="number" className="form-control" name="asset" value={formData.asset} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">청약 횟수</label>
                     <div className="col-9">
-                        <input type="text" className="form-control" name="numberOfApplications" value={formData.numberOfApplications} onChange={handleChange} />
+                        <input type="number" className="form-control" name="subscriptionNo" value={formData.subscriptionNo} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className="row mb-3" >
                     <label className="col-3 col-form-label">차량 가격</label>
                     <div className="col-2 d-flex align-items-center" style={{ fontSize: '14px' }}>
-                        <input
-                            type="radio"
-                            name="carValue"
-                            value="없음"
-                            onChange={handleChange}
-                            checked={formData.carValue === '없음'}
-                        /> 없음
+                        <input type="radio" name="carPrice" value="없음" onChange={handleChange} checked={formData.carPrice === '없음'} /> 없음
                     </div>
-    
                     <div className="col-2 d-flex align-items-center" style={{ fontSize: '14px' }}>
-                        <input
-                            type="radio"
-                            name="carValue"
-                            value="0~3683만원"
-                            onChange={handleChange}
-                            checked={formData.carValue === '0~3683만원'}
-                        /> 0~3683만원
+                        <input type="radio" name="carPrice" value="0~ 3683만원" onChange={handleChange} checked={formData.carPrice === '0~ 3683만원'} /> 0~3683만원
                     </div>
-    
                     <div className="col-2 d-flex align-items-center" style={{ fontSize: '14px' }}>
-                        <input
-                            type="radio"
-                            name="carValue"
-                            value="3683~3708만원"
-                            onChange={handleChange}
-                            checked={formData.carValue === '3683~3708만원'}
-                        /> 3683~3708만원
+                        <input type="radio" name="carPrice" value="3683 ~ 3708만원" onChange={handleChange} checked={formData.carPrice === '3683 ~ 3708만원'} /> 3683~3708만원
                     </div>
-    
                     <div className="col-2 d-flex align-items-center" style={{ fontSize: '14px' }}>
-                        <input
-                            type="radio"
-                            name="carValue"
-                            value="3708만원 이상"
-                            onChange={handleChange}
-                            checked={formData.carValue === '3708만원 이상'}
-                        /> 3708만원 이상
+                        <input type="radio" name="carPrice" value="3708만원 이상" onChange={handleChange} checked={formData.carPrice === '3708만원 이상'} /> 3708만원 이상
                     </div>
                 </div>
             </form>

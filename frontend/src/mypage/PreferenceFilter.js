@@ -1,26 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function PreferenceFilter() {
     const [preferences, setPreferences] = useState({
-        region: '은평구',
-        subsidy: '1000',
-        maxArea: 40,
+        favoriteLoc: '은평구', // 지역 이름
+        favMaxDeposit: 1000, // 최대 보증금
+        favMaxArea: 55, // 최대 평수
     });
 
+    // 데이터 가져오기
+    useEffect(() => {
+        const fetchPreferences = async () => {
+            try {
+                const response = await axios.get('http://13.125.39.194/users/preference-filter');
+                setPreferences(response.data);
+                console.log("got response: ", response.data);
+            } catch (error) {
+                console.error("Error fetching preferences:", error);
+            }
+        };
+        fetchPreferences();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setPreferences({ ...preferences, [name]: Number(value) });
+        const newValue = name === 'favMaxDeposit' || name === 'favMaxArea' ? Number(value) : value;
+        setPreferences({ ...preferences, [name]: newValue });
     };
 
     const handleSave = async () => {
-        // await axios.put('/api/preferences', preferences);
-        alert("선호 조건이 저장되었습니다.");
+        try {
+            await axios.put('http://13.125.39.194/users/preference-filter', preferences);
+            alert("선호 조건이 저장되었습니다.");
+        } catch (error) {
+            console.error("Error saving preferences:", error);
+        }
     };
 
     return (
-        <section className="info-section card p-3 mt-4" style={{ backgroundColor: '#F6F6F6', width: '900px' }}>
+        <section className="info-section card p-3 mt-5" style={{ backgroundColor: '#F6F6F6', width: '900px' }}>
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <p style={{ fontSize: '20px' }}>선호 조건 필터링</p>
                 <button type="button" className="btn btn-primary" onClick={handleSave}>저장</button>
@@ -30,14 +48,14 @@ function PreferenceFilter() {
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">지역</label>
                     <div className="col-9">
-                        <input type="text" className="form-control" name="region" value={preferences.region} onChange={handleChange} />
+                        <input type="text" className="form-control" name="favoriteLoc" value={preferences.favoriteLoc} onChange={handleChange} />
                     </div>
                 </div>
 
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">최대 보증금</label>
                     <div className="col-9">
-                        <input type="text" className="form-control" name="subsidy" value={preferences.subsidy} onChange={handleChange} />
+                        <input type="number" className="form-control" name="favMaxDeposit" value={preferences.favMaxDeposit} onChange={handleChange} />
                     </div>
                 </div>
 
@@ -45,16 +63,16 @@ function PreferenceFilter() {
                     <label className="col-3 col-form-label">선호 평수</label>
                     <div className="col-9">
                         <div className="d-flex justify-content-between mb-2">
-                            <span style={{ fontSize: '15px' }}>최대: {preferences.maxArea}평</span>
+                            <span style={{ fontSize: '15px' }}>최대: {preferences.favMaxArea}평</span>
                         </div>
                         <input 
                             type="range" 
                             className="form-range" 
-                            name="maxArea" 
+                            name="favMaxArea" 
                             min="0" 
                             max="55" 
                             step="1" 
-                            value={preferences.maxArea} 
+                            value={preferences.favMaxArea} 
                             onChange={handleChange} 
                             style={{ width: '50%' }} // 슬라이더 길이를 100%로 설정
                         />
