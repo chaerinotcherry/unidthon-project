@@ -15,7 +15,7 @@ app.use('/users', userRoutes);
 async function startServer() {
   try {
    
-    await db.sequelize.sync({ force: false }); 
+    await db.sequelize.sync({ force: true }); 
     console.log('Database synchronized!');
 
     app.listen(port, () => {
