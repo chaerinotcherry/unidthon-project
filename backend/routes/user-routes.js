@@ -51,8 +51,9 @@ router.get('/profile', async (req, res) => {
         phonenumber: '010-1234-5678'
     });
 });
-router.get('/filter', async (req, res) => {
-    const user = await User.findOne({ where: { id: 1 } });
+router.get('/myinfo', async (req, res) => {
+    const user = await User.findByPk(1);
+    console.log(user);
     res.status(200).json({
         birthYear: user.birthYear,
         currentJob: user.currentJob,
@@ -62,14 +63,11 @@ router.get('/filter', async (req, res) => {
           currentLoc: user.currentLoc,
           asset: user.asset,
           subscriptionNo: user.subscriptionNo,
-          carPrice: user.carPrice,
-          parentCarPrice: user.parentCarPrice,
-          parentHousePrice: user.parentHousePrice,
-          parentMonthlyIncome: user.parentMonthlyIncome
+          carPrice: user.carPrice
     })
 });
 
-router.put('/filter', async (req, res) => {
+router.put('/myinfo', async (req, res) => {
     const {birthYear,
         currentJob,
           haveHouse,
@@ -78,10 +76,7 @@ router.put('/filter', async (req, res) => {
           currentLoc,
           asset,
           subscriptionNo,
-          carPrice,
-          parentCarPrice,
-          parentHousePrice,
-          parentMonthlyIncome} = req.body;
+          carPrice} = req.body;
     const user = await User.findOne({ where: { id: 1 } });
         console.log(user);
 user.birthYear = birthYear;
@@ -93,6 +88,28 @@ user.currentLoc = currentLoc;
 user.asset = asset;
 user.subscriptionNo = subscriptionNo;
 user.carPrice = carPrice;
+  await user.save();
+  console.log(user);
+  res.status(200).json({ message: '수정 성공' });
+});
+
+router.get('/filter', async (req, res) => {
+    const user = await User.findByPk(1);
+    console.log(user);
+    res.status(200).json({
+          parentCarPrice: user.parentCarPrice,
+          parentHousePrice: user.parentHousePrice,
+          parentMonthlyIncome: user.parentMonthlyIncome
+    })
+});
+
+router.put('/filter', async (req, res) => {
+    const {
+          parentCarPrice,
+          parentHousePrice,
+          parentMonthlyIncome} = req.body;
+    const user = await User.findOne({ where: { id: 1 } });
+        console.log(user);
 user.parentCarPrice = parentCarPrice;
  user.parentHousePrice = parentHousePrice;
  user.parentMonthlyIncome = parentMonthlyIncome;
