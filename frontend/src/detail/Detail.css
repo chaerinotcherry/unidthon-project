@@ -37,7 +37,7 @@
   font-weight: 700;
   line-height: 20px; /* 100% */
   border: none;
-  margin-right: 700px;
+  margin-right: 680px;
 }
 
 .목록버튼 {
@@ -165,7 +165,7 @@
   display: block;
   margin: 0 auto;
   max-width: 100%; /* 부모 요소 너비에 맞춰 자동으로 크기 조절 */
-  width: 400px;
+  height: 400px;
 }
 
 .임대기간 {

@@ -53,7 +53,7 @@ function KakaoMap({ address }) {
     <div
       id="map"
       style={{
-        width: "400px",
+        width: "600px",
         height: "350px",
       }}
     ></div>
