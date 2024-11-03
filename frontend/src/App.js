@@ -12,6 +12,7 @@ import Home from "./home/Home";
 import Mypage from "./mypage/Mypage";
 import Header from "./home/components/Header";
 import Custom from "./home/Custom";
+import All from "./home/All";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function MainContent() {
             <Route path="/detail/:gonggoId" element={<Detail />} />{" "}
             {/* Detail 화면 */}
             <Route path="/custom" element={<Custom />} />{" "}
+            <Route path="/all" element={<All />} />{" "}
           </Routes>
         </div>
       </div>

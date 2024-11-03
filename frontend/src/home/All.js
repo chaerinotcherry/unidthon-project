@@ -1,48 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./Home.css";
-import buildingImage from "../assets/building.png";
-import a from "../assets/a.png"; // 이미지 경로를 올바르게 설정
-import b from "../assets/b.jpeg";
+import AllCard from "./components/AllCard";
 import c from "../assets/c.png";
 import d from "../assets/d.jpeg";
 import e from "../assets/e.png";
 import f from "../assets/f.png";
 import g from "../assets/g.png";
 import i from "../assets/i.jpeg";
-import CustomCard from "./components/CustomCard"; // CustomCard 컴포넌트 가져오기
-import AllCard from "./components/AllCard";
 
-function HomePage() {
-  const customCards = [
-    {
-      id: 10,
-      rank: "예상 1순위",
-      daysLeft: "D+2",
-      title: "구로구 매입임대주택",
-      price: "월 126,100원 ~",
-      location: "서울특별시 구로구",
-      image: buildingImage,
-    },
-    {
-      id: 11,
-      rank: "예상 2순위",
-      daysLeft: "D+3",
-      title: "용산구 매입임대주택",
-      price: "월 151,200원 ~",
-      location: "서울특별시 용산구",
-      image: a,
-    },
-    {
-      id: 9,
-      rank: "예상 3순위",
-      daysLeft: "D+8",
-      title: "강동구 매입임대주택",
-      price: "월 242,000원 ~",
-      location: "서울특별시 강동구",
-      image: b,
-    },
-  ];
-
+function Custom() {
   const allCards = [
     {
       id: 2,
@@ -92,20 +58,10 @@ function HomePage() {
       location: "서울특별시 은평구",
       image: i,
     },
-    // 추가 공고 데이터를 여기에 추가할 수 있습니다.
   ];
 
   return (
     <div className="home-page">
-      <div className="cus-section">
-        <h2 className="section-title">맞춤 공고</h2>
-        <div className="card-container">
-          {customCards.map((card) => (
-            <CustomCard key={card.id} card={card} />
-          ))}
-        </div>
-      </div>
-
       <div className="cus-section">
         <h2 className="section-title">전체 공고</h2>
         <div className="card-container">
@@ -118,4 +74,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default Custom;

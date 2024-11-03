@@ -9,6 +9,7 @@ function Header() {
   const isHome = location.pathname === "/";
   const isStatus = location.pathname === "/status";
   const isCus = location.pathname === "/custom";
+  const isAll = location.pathname === "/all";
 
   // 검색 버튼 클릭 시 실행되는 함수 (검색 기능 구현 예정)
   const handleSearch = () => {
@@ -88,7 +89,7 @@ function Header() {
         <Link to="/custom" className={`nav-link ${isCus ? "active" : ""}`}>
           맞춤 공고
         </Link>
-        <Link to="/all-announcements" className="nav-link">
+        <Link to="/all" className={`nav-link ${isAll ? "active" : ""}`}>
           전체 공고
         </Link>
         <Link to="/status" className={`nav-link ${isStatus ? "active" : ""}`}>
