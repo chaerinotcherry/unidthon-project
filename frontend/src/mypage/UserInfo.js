@@ -75,6 +75,7 @@ function UserInfo() {
                             <option value="일반 근로자">일반 근로자</option>
                             <option value="건설 근로자">건설 근로자</option>
                             <option value="제조업 근로자">제조업 근로자</option>
+                            <option value="무직">무직</option>
                         </select>
                     </div>
                 </div>
