@@ -40,7 +40,7 @@ function PreferenceFilter() {
     return (
         <section className="info-section card p-3 mt-5" style={{ backgroundColor: '#F6F6F6', width: '900px' }}>
             <div className="d-flex justify-content-between align-items-center mb-4">
-                <p style={{ fontSize: '20px' }}>선호 조건 필터링</p>
+                <p style={{ fontSize: '20px', fontWeight: '700' }}>선호 조건 필터링</p>
                 <button type="button" className="btn btn-primary" onClick={handleSave}>저장</button>
             </div>
             
@@ -59,12 +59,14 @@ function PreferenceFilter() {
                     </div>
                 </div>
 
-                <div className="row mb-3">
+                <div className="row mb-3 align-items-center">
                     <label className="col-3 col-form-label">선호 평수</label>
-                    <div className="col-9">
-                        <div className="d-flex justify-content-between mb-2">
+                    <div className="col-2 mt-2">
+                        <div className="d-flex mb-2">
                             <span style={{ fontSize: '15px' }}>최대: {preferences.favMaxArea}평</span>
                         </div>
+                    </div>
+                    <div className="col-7 mt-2">
                         <input 
                             type="range" 
                             className="form-range" 
@@ -74,7 +76,7 @@ function PreferenceFilter() {
                             step="1" 
                             value={preferences.favMaxArea} 
                             onChange={handleChange} 
-                            style={{ width: '50%' }} // 슬라이더 길이를 100%로 설정
+                            style={{ width: '65%' }} // 슬라이더 길이를 60%로 설정
                         />
                     </div>
                 </div>

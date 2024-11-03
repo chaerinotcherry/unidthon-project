@@ -39,7 +39,7 @@ function FamilyInfo() {
     return (
         <section className="info-section card p-4 mt-5" style={{ backgroundColor: '#F6F6F6', width: '900px' }}>
             <div className="d-flex justify-content-between align-items-center mb-4">
-                <p style={{ fontSize: '20px' }}>세대 정보 (부모 재산)</p>
+                <p style={{ fontSize: '20px', fontWeight: '700' }}>세대 정보 (부모 재산)</p>
                 <button type="button" className="btn btn-primary" onClick={handleSave}>저장</button>
             </div>
             
@@ -54,6 +54,7 @@ function FamilyInfo() {
                             value="없음"
                             onChange={handleChange}
                             checked={familyInfo.parentCarPrice === '없음'}
+                            style={{ marginRight: '3px' }}
                         /> 없음
                     </div>
 
@@ -64,6 +65,7 @@ function FamilyInfo() {
                             value="0~ 3683만원"
                             onChange={handleChange}
                             checked={familyInfo.parentCarPrice === '0~ 3683만원'}
+                            style={{ marginRight: '3px' }}
                         /> 0~3683만원
                     </div>
 
@@ -74,6 +76,7 @@ function FamilyInfo() {
                             value="3683 ~ 3708만원"
                             onChange={handleChange}
                             checked={familyInfo.parentCarPrice === '3683 ~ 3708만원'}
+                            style={{ marginRight: '3px' }}
                         /> 3683~3708만원
                     </div>
 
@@ -84,6 +87,7 @@ function FamilyInfo() {
                             value="3708만원 이상"
                             onChange={handleChange}
                             checked={familyInfo.parentCarPrice === '3708만원 이상'}
+                            style={{ marginRight: '3px' }}
                         /> 3708만원 이상
                     </div>
                 </div>

@@ -45,17 +45,17 @@ function UserInfo() {
     return (
         <div className="card p-4 mt-5" style={{ backgroundColor: '#F6F6F6', width: '900px' }}>
             <div className="d-flex justify-content-between align-items-center mb-4">
-                <p style={{ fontSize: '20px' }}>내 정보</p>
+                <p style={{ fontSize: '20px', fontWeight: 700 }}>내 정보</p>
                 <button type="button" className="btn btn-primary" onClick={handleSave}>저장</button>
             </div>
             <form>
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">무주택자 여부</label>
-                    <div className="col-3 d-flex align-items-center">
-                        <input type="radio" name="haveHouse" value={true} onChange={handleChange} checked={formData.haveHouse === true} /> 예
+                    <div className="col-4 d-flex align-items-center">
+                        <input type="radio" name="haveHouse" value={true} onChange={handleChange} checked={formData.haveHouse === true} style={{ marginRight: '3px' }} /> 예
                     </div>
-                    <div className="col-3 d-flex align-items-center">
-                        <input type="radio" name="haveHouse" value={false} onChange={handleChange} checked={formData.haveHouse === false} /> 아니오
+                    <div className="col-4 d-flex align-items-center">
+                        <input type="radio" name="haveHouse" value={false} onChange={handleChange} checked={formData.haveHouse === false} style={{ marginRight: '3px' }} /> 아니오
                     </div>
                 </div>
 
@@ -88,11 +88,11 @@ function UserInfo() {
 
                 <div className="row mb-3">
                     <label className="col-3 col-form-label">5년이상 근로 경험 여부</label>
-                    <div className="col-3 d-flex align-items-center">
-                        <input type="radio" name="haveWorked" value={true} onChange={handleChange} checked={formData.haveWorked === true} /> 예
+                    <div className="col-4 d-flex align-items-center">
+                        <input type="radio" name="haveWorked" value={true} onChange={handleChange} checked={formData.haveWorked === true} style={{ marginRight: '3px' }}/> 예
                     </div>
-                    <div className="col-3 d-flex align-items-center">
-                        <input type="radio" name="haveWorked" value={false} onChange={handleChange} checked={formData.haveWorked === false} /> 아니오
+                    <div className="col-4 d-flex align-items-center">
+                        <input type="radio" name="haveWorked" value={false} onChange={handleChange} checked={formData.haveWorked === false} style={{ marginRight: '3px' }}/> 아니오
                     </div>
                 </div>
 
@@ -120,16 +120,16 @@ function UserInfo() {
                 <div className="row mb-3" >
                     <label className="col-3 col-form-label">차량 가격</label>
                     <div className="col-2 d-flex align-items-center" style={{ fontSize: '14px' }}>
-                        <input type="radio" name="carPrice" value="없음" onChange={handleChange} checked={formData.carPrice === '없음'} /> 없음
+                        <input type="radio" name="carPrice" value="없음" onChange={handleChange} checked={formData.carPrice === '없음'} style={{ marginRight: '3px' }} /> 없음
                     </div>
                     <div className="col-2 d-flex align-items-center" style={{ fontSize: '14px' }}>
-                        <input type="radio" name="carPrice" value="0~ 3683만원" onChange={handleChange} checked={formData.carPrice === '0~ 3683만원'} /> 0~3683만원
+                        <input type="radio" name="carPrice" value="0~ 3683만원" onChange={handleChange} checked={formData.carPrice === '0~ 3683만원'} style={{ marginRight: '3px' }}/> 0~3683만원
                     </div>
                     <div className="col-2 d-flex align-items-center" style={{ fontSize: '14px' }}>
-                        <input type="radio" name="carPrice" value="3683 ~ 3708만원" onChange={handleChange} checked={formData.carPrice === '3683 ~ 3708만원'} /> 3683~3708만원
+                        <input type="radio" name="carPrice" value="3683 ~ 3708만원" onChange={handleChange} checked={formData.carPrice === '3683 ~ 3708만원'} style={{ marginRight: '3px' }}/> 3683~3708만원
                     </div>
                     <div className="col-2 d-flex align-items-center" style={{ fontSize: '14px' }}>
-                        <input type="radio" name="carPrice" value="3708만원 이상" onChange={handleChange} checked={formData.carPrice === '3708만원 이상'} /> 3708만원 이상
+                        <input type="radio" name="carPrice" value="3708만원 이상" onChange={handleChange} checked={formData.carPrice === '3708만원 이상'} style={{ marginRight: '3px' }}/> 3708만원 이상
                     </div>
                 </div>
             </form>
