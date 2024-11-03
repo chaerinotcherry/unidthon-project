@@ -29,11 +29,11 @@ function Mypage() {
         <div className="container d-flex justify-content-center align-items-center mt-5">
             <div className="mypage">
                 <div className="card p-3 text-start" style={{ width: '900px', backgroundColor: '#F6F6F6' }}>
-                    <div className="d-flex align-items-center mb-3 ms-3">
+                    <div className="d-flex align-items-center mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#2A74B7" className="bi bi-person-fill" viewBox="0 0 16 16">
                             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
                         </svg>
-                        <h5 className="mb-0" style={{ fontSize: '20px', color: '#2A74B7', fontWeight: '650' }}>{userData.nickname}</h5>
+                        <h5 className="mb-0 ms-2" style={{ fontSize: '20px', color: '#2A74B7', fontWeight: '650' }}>{userData.nickname}</h5>
                     </div>
                     <p className="mb-1">{userData.username}</p>
                     <p className="mb-0">Tel: {userData.phonenumber}</p>
