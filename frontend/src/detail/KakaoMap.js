@@ -4,7 +4,7 @@ function KakaoMap({ address }) {
   useEffect(() => {
     // 카카오 맵 API 스크립트 불러오기
     const script = document.createElement("script");
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=비밀이지롱&autoload=false&libraries=services`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=5a0cdd3ffab3e995f9cd5f35b5e86bab&autoload=false&libraries=services`;
     script.async = true;
     document.head.appendChild(script);
 
