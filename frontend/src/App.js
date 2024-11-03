@@ -13,6 +13,7 @@ import Mypage from "./mypage/Mypage";
 import Header from "./home/components/Header";
 import Custom from "./home/Custom";
 import All from "./home/All";
+import Status from "./home/Status";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
 
 function MainContent() {
   const location = useLocation();
-  const hideHeaderPaths = ["/mypage", "/detail/:gonggoId"];
+  const hideHeaderPaths = ["/detail/:gonggoId"];
   const showHeader = !hideHeaderPaths.some((path) =>
     matchPath({ path, end: true }, location.pathname)
   );
@@ -41,6 +42,7 @@ function MainContent() {
             {/* Detail 화면 */}
             <Route path="/custom" element={<Custom />} />{" "}
             <Route path="/all" element={<All />} />{" "}
+            <Route path="/status" element={<Status />} />{" "}
           </Routes>
         </div>
       </div>

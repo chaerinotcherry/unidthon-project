@@ -11,14 +11,6 @@ function Header() {
   const isCus = location.pathname === "/custom";
   const isAll = location.pathname === "/all";
 
-  // 검색 버튼 클릭 시 실행되는 함수 (검색 기능 구현 예정)
-  const handleSearch = () => {
-    if (searchQuery) {
-      // 검색 기능을 여기에 추가 (필요에 따라 검색 결과 페이지로 이동하거나 결과 표시)
-      console.log(`Searching for: ${searchQuery}`);
-    }
-  };
-
   return (
     <header className="header">
       <div className="header-top">
