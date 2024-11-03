@@ -62,7 +62,12 @@ function Detail() {
         }}
       >
         <div>
-          <button className="청약추가버튼">내 청약 추가</button>
+          <button
+            className="청약추가버튼"
+            onClick={() => alert("내 청약에 추가되었습니다")}
+          >
+            내 청약 추가
+          </button>
           <button
             className="청약신청바로가기버튼"
             onClick={() => window.open(houseInfo.공고링크, "_blank")}
