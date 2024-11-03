@@ -131,6 +131,11 @@ function Detail() {
             src={supplies[selectedIndex].평면도_object_key}
             alt="단지 관련 이미지"
             className="단지이미지"
+            onError={(e) => {
+              e.target.onerror = null; // 무한 반복 방지
+              e.target.src =
+                "https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-18055.jpg"; // 대체 이미지 URL
+            }}
           />
         </div>
 
